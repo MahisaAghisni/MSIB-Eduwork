@@ -1,0 +1,80 @@
+.container{
+    background-color: white;
+}
+
+.navbar{
+    text-align: center;
+    background-color: #c4a8a8;
+    padding: 1px;
+    margin-bottom: 20px;
+}
+
+.navbar li{
+    display: inline-block;
+    padding-right: 50px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+
+.navbar a:hover {
+    color: wheat;
+}
+
+.hero {
+    width: auto;
+    background-image: url("https://images.unsplash.com/photo-1600846309541-420e33acda4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fHN0YWRpdW0lMjBnZWxvcmElMjBidW5nJTIwa2Fybm98ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60");
+    background-position: 0 -180px;
+    background-size: cover;
+    height: 500px;
+    border-top: 5px solid gainsboro;
+    border-bottom: 5px solid gainsboro;
+}
+
+.content-wrapper {
+    display: flex;
+}
+
+.content-text {
+    flex: 1;
+    text-align: justify;
+    padding: 0 20px;
+}
+
+.content-text h2 {
+    margin-top: 20px;
+    padding-top: 30px;
+    padding-bottom: 15px;
+    padding-left: 150px;
+}
+
+.content p{
+    padding-left: 150px;
+}
+
+.content-image {
+    flex: 1;
+    text-align: right;
+}
+
+.content-image img {
+    margin-top: 70px;
+    margin-bottom: 50px;
+    margin-right: 250px;
+    width: 300px;
+    height: 300px;
+}
+
+.footer {
+    background-color: #c4a8a8;
+    padding: 1px;
+}
+
+.footer h3 {
+    font-size: 14px;
+    color: black;
+    text-align: center;
+}
