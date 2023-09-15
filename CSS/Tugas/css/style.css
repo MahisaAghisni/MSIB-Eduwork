@@ -1,0 +1,185 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: -apple-system, "system-ui", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fcfbfb;
+    height: 100vh;
+    margin: 0px;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 80px;
+}
+
+.content .left {
+    margin-right: 155px;
+    height: 700px; 
+    width: 430px; 
+}
+
+.left img {
+    position: relative;
+    width: 100%;
+    margin-left: 155px;
+}
+
+.right {
+    margin-right: 100px;
+    height: 690px;
+}
+
+.signin {
+    display: flex;
+    width: 350px;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: stretch;
+    background-color: white;
+    border: 1px solid rgba(219, 219, 219);
+    font-family: -apple-system;
+    padding: 40px;
+    margin: 20px;
+}
+
+.signin img {
+    padding: 0px 50px 10px 50px;
+}
+
+input {
+    all: unset;
+    padding: 10px;
+    border: 1px solid rgba(219, 219, 219);
+    margin-top: 10px;
+}
+#btn {
+    background-color: #0095f6;
+    color: white;
+    border: 1px solid #0095f6;
+    border-radius: 4px;
+    margin-top: 10px;
+    padding: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.bottom {
+    display: flex;
+    margin-top: 30px;
+    flex-direction: row;
+    align-items: center;
+}
+
+.bottom .strip {
+    background-color: grey;
+    height: 1px;
+    width: 120px;
+}
+
+.or {
+    font-size: 14px;
+    color: gray;
+    padding: 0px 10px 0px 10px;
+}
+
+.facebook {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #385185;
+    font-family: -apple-system;
+}
+
+.forgot {
+    color: rgb(0, 55, 107);
+    margin-top: 25px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 300;
+    font-family: -apple-system;
+}
+
+.signup{
+    background-color: white;
+    border: 1px solid rgba(219, 219, 219);
+    font-family: -apple-system;
+    padding: 20px;
+    margin: 20px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.signup a {
+    color: rgb(0, 149, 246);
+    font-weight: 500;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.get p{
+    text-align: center;
+}
+
+.image {
+    text-align: center;
+}
+
+.image img{
+    margin-top: 20px;
+    width: 150px;
+}
+
+.footer {
+    height: 10%;
+}
+
+.footer .list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+    max-width: 700px;
+    margin: auto;
+}
+
+.list span {
+    color: gray;
+    padding: 10px;
+}
+
+.footer .dropdown {
+    text-align: center;
+    margin-right: 200px;
+    
+}
+
+.footer .dropdown .option {
+    margin-top: 10px;
+    color: gray;
+    padding: 1px;
+    border: none;
+    font-size: 16px;
+}
+
+.footer .fb {
+    margin-top: -22.9px;
+    margin-left: 150px;
+    color: gray;
+    text-align: center;
+}
+
+.fb p {
+    color: gray;
+}
