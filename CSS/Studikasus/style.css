@@ -1,0 +1,38 @@
+.container {
+    width: 800px;
+    margin: auto;
+}
+
+.content {
+    width: 400px;
+    float: left;
+}
+
+.content h1 {
+    font-family: Arial;
+    font-weight: 700;
+    font-size: 60px;
+    padding-top: 50px;
+}
+
+.content h5 {
+    padding-top: 25px;
+    font-size: 20px;
+}
+
+.content button {
+    margin-top: 20px;
+    margin-left: 1px;
+    border: 0px;
+}
+
+.content .btn {
+    padding: 10px;
+    background-color: yellow;
+}
+
+.img {
+    width: 300px;
+    float: right;
+    padding-top: 180px;
+}
