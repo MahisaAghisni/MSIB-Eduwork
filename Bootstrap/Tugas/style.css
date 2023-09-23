@@ -1,0 +1,11 @@
+body {
+    background: #f6fcff;
+    color: #404040;
+    font-family: Poppins;
+}
+
+.container {
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
