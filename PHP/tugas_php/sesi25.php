@@ -1,38 +1,55 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
 
-//Nomor 1
-$nilai = 10;
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesi 25</title>
+</head>
 
-if ($nilai % 2 == 0) {
-    echo "$nilai adalah bilangan genap";
-} else {
-    echo "$nilai adalah bilangan ganjil";
-}
+<body>
 
-//Nomor 2
-echo "<br>";
+    <?php
 
-$tahun = 2023;
+    //Nomor 1
+    $nilai = 10;
 
-if (($tahun % 4 == 0 && $tahun % 100 != 0) || $tahun % 400 == 0) {
-    echo "$tahun adalah tahun kabisat.";
-} else {
-    echo "$tahun bukan tahun kabisat.";
-}
+    if ($nilai % 2 == 0) {
+        echo "$nilai adalah bilangan genap";
+    } else {
+        echo "$nilai adalah bilangan ganjil";
+    }
 
-//Nomor 3
-echo "<br>";
+    //Nomor 2
+    echo "<br>";
 
-$nilai = 100;
+    $tahun = 2023;
 
-if ($nilai >= 90 && $nilai <= 100) {
-    echo "Grade A";
-} else if ($nilai >= 80 && $nilai < 90) {
-    echo "Grade B";
-} else if ($nilai >= 70 && $nilai < 80) {
-    echo "Grade C";
-} else if ($nilai >= 60 && $nilai < 70) {
-    echo "Grade D";
-} else {
-    echo "Grade E";
-}
+    if (($tahun % 4 == 0 && $tahun % 100 != 0) || $tahun % 400 == 0) {
+        echo "$tahun adalah tahun kabisat.";
+    } else {
+        echo "$tahun bukan tahun kabisat.";
+    }
+
+    //Nomor 3
+    echo "<br>";
+
+    $nilai = 100;
+
+    if ($nilai >= 90 && $nilai <= 100) {
+        echo "Grade A";
+    } else if ($nilai >= 80 && $nilai < 90) {
+        echo "Grade B";
+    } else if ($nilai >= 70 && $nilai < 80) {
+        echo "Grade C";
+    } else if ($nilai >= 60 && $nilai < 70) {
+        echo "Grade D";
+    } else {
+        echo "Grade E";
+    }
+
+    ?>
+
+</body>
+
+</html>
