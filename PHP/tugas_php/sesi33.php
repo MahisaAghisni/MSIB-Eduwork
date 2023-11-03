@@ -54,12 +54,8 @@
             </tr>
         </thead>
         <tbody>
-            <?php
-            $i = 1;
-            ?>
-
             <tr>
-                <td><?php echo $i++; ?></td>
+                <td>1</td>
                 <td>Buat looping dengan ketentuan berikut: <br> array = array("satu", "dua", "tiga", "empat", "lima")</td>
                 <td class="code">
                     <?php
@@ -78,7 +74,7 @@
                 </td>
             </tr>
             <tr>
-                <td><?php echo $i++; ?></td>
+                <td>2</td>
                 <td>Buat looping dengan ketentuan berikut: <br> array = array("apel", "nanas", "mangga", "jeruk")</td>
                 <td class="code">
                     <?php
@@ -94,7 +90,7 @@
                 </td>
             </tr>
             <tr>
-                <td><?php echo $i++; ?></td>
+                <td>3</td>
                 <td>Buat looping dengan ketentuan berikut: <br> array = array("7", "3", "4", "9")</td>
                 <td class="code">
                     <?php
@@ -116,7 +112,7 @@
                 </td>
             </tr>
             <tr>
-                <td><?php echo $i++; ?></td>
+                <td>4</td>
                 <td>Buat Looping dengan ketentuan berikut: <br> 1x1=1, sampai 1x10=10</td>
                 <td class="code">
                     <?php
