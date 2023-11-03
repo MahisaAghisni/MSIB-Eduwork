@@ -63,15 +63,16 @@
                 <td>Buat looping dengan ketentuan berikut: <br> array = array("satu", "dua", "tiga", "empat", "lima")</td>
                 <td class="code">
                     <?php
-                    $jawaban = '<?php $array = array("satu", "dua", "tiga", "empat", "lima"); foreach ($array as $item) { echo $item . "<br>"; } ?>';
+                    $jawaban = '<?php $array = array("satu", "dua", "tiga", "empat", "lima"); for ($i = count($array) - 1; $i >= 0; $i--) { echo $array[$i] . "<br>"; } ?>';
                     echo htmlspecialchars($jawaban);
                     ?>
                 </td>
                 <td>
                     <?php
                     $array = array("satu", "dua", "tiga", "empat", "lima");
-                    foreach ($array as $item) {
-                        echo $item . "<br>";
+
+                    for ($i = count($array) - 1; $i >= 0; $i--) {
+                        echo $array[$i] . "<br>";
                     }
                     ?>
                 </td>
@@ -81,16 +82,14 @@
                 <td>Buat looping dengan ketentuan berikut: <br> array = array("apel", "nanas", "mangga", "jeruk")</td>
                 <td class="code">
                     <?php
-                    $jawaban = '<?php $array = array("apel", "nanas", "mangga", "jeruk"); foreach ($array as $item) { echo $item . "<br>"; } ?>';
+                    $jawaban = '<?php $array = array("apel", "nanas", "mangga", "jeruk"); echo "terdapat " . count($array) . " buah <br>"; ?>';
                     echo htmlspecialchars($jawaban);
                     ?>
                 </td>
                 <td>
                     <?php
                     $array = array("apel", "nanas", "mangga", "jeruk");
-                    foreach ($array as $item) {
-                        echo $item . "<br>";
-                    }
+                    echo "terdapat " . count($array) . " buah <br>";
                     ?>
                 </td>
             </tr>
@@ -107,31 +106,28 @@
                     <?php
                     $array = array("7", "3", "4", "9");
                     $total = 0;
+
                     foreach ($array as $value) {
                         $total += intval($value);
                     }
+
                     echo "totalnya adalah " . $total . "<br>";
                     ?>
                 </td>
             </tr>
             <tr>
                 <td><?php echo $i++; ?></td>
-                <td>Output: 1x1=1, 1x2=2, sampai 1x10=10</td>
+                <td>Buat Looping dengan ketentuan berikut: <br> 1x1=1, sampai 1x10=10</td>
                 <td class="code">
                     <?php
-                    $jawaban = '<?php for ($i = 1; $i <= 10; $i++) { echo "1x" . $i . "=" . (1 * $i); if ($i < 10) { echo ", "; } else { echo "<br>"; } } ?>';
+                    $jawaban = 'for ($i = 1; $i <= 10; $i++) { echo "1x" . $i . " = " . $i . "<br>"; }';
                     echo htmlspecialchars($jawaban);
                     ?>
                 </td>
                 <td>
                     <?php
                     for ($i = 1; $i <= 10; $i++) {
-                        echo "1x" . $i . "=" . (1 * $i);
-                        if ($i < 10) {
-                            echo ", ";
-                        } else {
-                            echo "<br>";
-                        }
+                        echo "1x" . $i . " = " . $i . "<br>";
                     }
                     ?>
                 </td>
