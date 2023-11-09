@@ -14,6 +14,7 @@ $query = mysqli_query($conn, "SELECT * FROM stock");
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
 
     <title>Sesi 29</title>
 
@@ -85,7 +86,7 @@ $query = mysqli_query($conn, "SELECT * FROM stock");
                         </div>
                     </div>
                 </div>
-                <table class="table table-bordered table-striped">
+                <table id="myTable" class="table table-bordered table-striped">
                     <thead class="table" style="background-color: #444444;">
                         <tr>
                             <th>No</th>
@@ -159,10 +160,15 @@ $query = mysqli_query($conn, "SELECT * FROM stock");
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
 
     <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable();
+        });
+
+
         const urlParams = new URLSearchParams(window.location.search);
         const addSuccess = urlParams.get('add_success');
         const updateSuccess = urlParams.get('update_success');
