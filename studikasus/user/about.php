@@ -1,3 +1,8 @@
+<?php
+session_start();
+include('../admin/connection.php');
+?>
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -43,7 +48,7 @@
     <!-- Offcanvas Menu End -->
 
     <!-- Header Section Begin -->
-    <header class="header">
+    <header class="header fixed-top" style="transition: 0.5s;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-3">
@@ -63,7 +68,24 @@
                 <div class="col-lg-3 col-md-3">
                     <div class="header__menu mobile-menu">
                         <ul>
-                            <li><a href="../admin/">Login</a></li>
+                            <?php
+                            if (isset($_SESSION['role'])) {
+                            ?>
+                                <li><a href="#"><?php echo $_SESSION['nama_user']; ?></a>
+                                    <ul class="dropdown">
+                                        <li><a href="logout.php">Logout</a></li>
+                                        <?php
+                                        if ($_SESSION['role'] === 'admin') {
+                                        ?>
+                                            <li><a href="../admin/">Dashboard</a></li>
+                                        <?php
+                                        }
+                                        ?>
+                                    </ul>
+                                </li>
+                            <?php } else { ?>
+                                <li><a href="login.php">Login</a></li>
+                            <?php } ?>
                         </ul>
                     </div>
                 </div>
@@ -322,6 +344,22 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+
+    <script>
+        var prevScrollpos = window.pageYOffset;
+
+        window.onscroll = function() {
+            var currentScrollPos = window.pageYOffset;
+
+            if (prevScrollpos > currentScrollPos) {
+                document.querySelector('.header').style.top = '0';
+            } else {
+                document.querySelector('.header').style.top = '-100px';
+            }
+
+            prevScrollpos = currentScrollPos;
+        }
+    </script>
 </body>
 
 </html>

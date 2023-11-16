@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('../admin/connection.php');
 $product_name = htmlspecialchars($_GET['product_name']);
 $query = mysqli_query($conn, "SELECT * FROM product WHERE product_name = '$product_name'");
@@ -53,7 +54,7 @@ $queryproductterkait = mysqli_query($conn, "SELECT * FROM product WHERE category
     <!-- Offcanvas Menu End -->
 
     <!-- Header Section Begin -->
-    <header class="header">
+    <header class="header fixed-top" style="transition: 0.5s;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-3">
@@ -73,7 +74,24 @@ $queryproductterkait = mysqli_query($conn, "SELECT * FROM product WHERE category
                 <div class="col-lg-3 col-md-3">
                     <div class="header__menu mobile-menu">
                         <ul>
-                            <li><a href="../admin/">Login</a></li>
+                            <?php
+                            if (isset($_SESSION['role'])) {
+                            ?>
+                                <li><a href="#"><?php echo $_SESSION['nama_user']; ?></a>
+                                    <ul class="dropdown">
+                                        <li><a href="logout.php">Logout</a></li>
+                                        <?php
+                                        if ($_SESSION['role'] === 'admin') {
+                                        ?>
+                                            <li><a href="../admin/">Dashboard</a></li>
+                                        <?php
+                                        }
+                                        ?>
+                                    </ul>
+                                </li>
+                            <?php } else { ?>
+                                <li><a href="login.php">Login</a></li>
+                            <?php } ?>
                         </ul>
                     </div>
                 </div>
@@ -122,11 +140,11 @@ $queryproductterkait = mysqli_query($conn, "SELECT * FROM product WHERE category
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
-                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star"></i>
                                 <span> - 5 Reviews</span>
                             </div>
-                            <h5>Stock : <?php echo $product['stock']; ?></h5>
-                            <h5>Price : <?php echo $product['price']; ?></h5>
+                            <h5>Stock : <?php echo $product['stock']; ?> </h5>
+                            <h5>Price : Rp. <?php echo number_format($product['price'], 0, ',', '.'); ?></h5>
                         </div>
                     </div>
                 </div>
@@ -157,7 +175,7 @@ $queryproductterkait = mysqli_query($conn, "SELECT * FROM product WHERE category
     <!-- Shop Details Section End -->
 
     <!-- Related Section Begin -->
-    <section class="related spad">
+    <section class="related spad mt-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -168,7 +186,8 @@ $queryproductterkait = mysqli_query($conn, "SELECT * FROM product WHERE category
                 <?php while ($data = mysqli_fetch_array($queryproductterkait)) { ?>
                     <div class="col-lg-3 col-md-6 col-sm-6 col-sm-6">
                         <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="../admin/assets/img/<?php echo $data['image']; ?>">
+                            <div class="product__item__pic set-bg">
+                                <img src=" ../admin/assets/img/<?php echo $data['image']; ?>" alt="" width="250px" height="280px">
                                 <ul class="product__hover">
                                     <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
                                     <li><a href="#"><img src="img/icon/compare.png" alt=""></a></li>
@@ -183,9 +202,9 @@ $queryproductterkait = mysqli_query($conn, "SELECT * FROM product WHERE category
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star"></i>
                                 </div>
-                                <h5><?php echo $data['price']; ?></h5>
+                                <h5>Rp. <?php echo number_format($data['price'], 0, ',', '.'); ?></h5>
                                 <div class="product__color__select">
                                     <label for="pc-1">
                                         <input type="radio" id="pc-1">
@@ -301,6 +320,22 @@ $queryproductterkait = mysqli_query($conn, "SELECT * FROM product WHERE category
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+
+    <script>
+        var prevScrollpos = window.pageYOffset;
+
+        window.onscroll = function() {
+            var currentScrollPos = window.pageYOffset;
+
+            if (prevScrollpos > currentScrollPos) {
+                document.querySelector('.header').style.top = '0';
+            } else {
+                document.querySelector('.header').style.top = '-100px';
+            }
+
+            prevScrollpos = currentScrollPos;
+        }
+    </script>
 </body>
 
 </html>

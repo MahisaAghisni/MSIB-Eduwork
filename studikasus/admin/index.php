@@ -1,3 +1,18 @@
+<?php
+include('cek.php');
+include 'connection.php';
+
+$queryproduct = mysqli_query($conn, "SELECT * FROM product");
+$jumlahproduct = mysqli_num_rows($queryproduct);
+
+$querycategory = mysqli_query($conn, "SELECT * FROM category");
+$jumlahcategory = mysqli_num_rows($querycategory);
+
+$querybrands = mysqli_query($conn, "SELECT * FROM brands");
+$jumlahbrands = mysqli_num_rows($querybrands);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -58,22 +73,26 @@
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
                 <li class="nav-item dropdown pe-3">
-
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <img src="assets/img/profile.png" alt="Profile" class="rounded-circle">
-                        <span class="d-none d-md-block dropdown-toggle ps-2">Admin</span>
-                    </a><!-- End Profile Iamge Icon -->
+                        <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo $_SESSION['nama_user']; ?></span>
+                    </a>
 
                     <ul class="dropdown-menu">
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="../user/">
+                            <a class="dropdown-item d-flex align-items-center" href="../user/index.php">
+                                <i class="bi bi-person"></i>
+                                <span>Home</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="../user/login.php">
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>Log Out</span>
                             </a>
                         </li>
-                    </ul><!-- End Profile Dropdown Items -->
-                </li><!-- End Profile Nav -->
+                    </ul>
 
+                </li>
             </ul>
         </nav>
         <!-- End Icons Navigation -->
@@ -133,45 +152,64 @@
 
         <section class="section dashboard">
             <div class="row">
-                <!-- Left side columns -->
                 <div class="col-lg">
                     <div class="row">
-                        <!-- Recent Category -->
-                        <div class="col-12" id="category">
-                            <div class="card recent-sales overflow-auto">
-
+                        <div class="col-xxl-4 col-md-6">
+                            <div class="card info-card sales-card">
                                 <div class="card-body">
-                                    <h5 class="card-title" id="category">Recent Category</h5>
+                                    <h5 class="card-title">Product</h5>
+                                    <div class="d-flex align-items-center">
+                                        <a href="product/product.php">
+                                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                <i class="bi bi-box2"></i>
+                                            </div>
+                                        </a>
+                                        <div class="ps-3">
+                                            <h6><?php echo $jumlahproduct; ?></h6>
+                                            <span class="text-success small pt-1 fw-bold"><?php echo $jumlahproduct; ?></span> <span class="text-muted small pt-2 ps-1">Product yang tersedia</span>
+                                        </div>
+                                    </div>
                                 </div>
-
                             </div>
                         </div>
-                        <!-- End Recent Category -->
-
-                        <!-- Recent Brand -->
-                        <div class="col-12" id="brand">
-                            <div class="card recent-sales overflow-auto">
-
-                                <div class="card-body" id="brand">
-                                    <h5 class="card-title">Recent Brand</h5>
-                                </div>
-
-                            </div>
-                        </div>
-                        <!-- End Recent Brand -->
-
-                        <!-- Recent Product -->
-                        <div class="col-12">
-                            <div class="card recent-sales overflow-auto">
+                        <div class="col-xxl-4 col-md-6">
+                            <div class="card info-card sales-card">
                                 <div class="card-body">
-                                    <h5 class="card-title" id="product">Recent Product</h5>
+                                    <h5 class="card-title">Category</h5>
+                                    <div class="d-flex align-items-center">
+                                        <a href="category/category.php">
+                                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                <i class="bi bi-clipboard2-data"></i>
+                                            </div>
+                                        </a>
+                                        <div class="ps-3">
+                                            <h6><?php echo $jumlahcategory; ?></h6>
+                                            <span class="text-success small pt-1 fw-bold"><?php echo $jumlahcategory; ?></span> <span class="text-muted small pt-2 ps-1">Category yang tersedia</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- End Recent Product -->
+                        <div class="col-xxl-4 col-md-6">
+                            <div class="card info-card sales-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Brands</h5>
+                                    <div class="d-flex align-items-center">
+                                        <a href="brand/brand.php">
+                                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                <i class="bi bi-tags"></i>
+                                            </div>
+                                        </a>
+                                        <div class="ps-3">
+                                            <h6><?php echo $jumlahbrands; ?></h6>
+                                            <span class="text-success small pt-1 fw-bold"><?php echo $jumlahbrands; ?></span> <span class="text-muted small pt-2 ps-1">Brands yang tersedia</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <!-- End Left side columns -->
             </div>
         </section>
 

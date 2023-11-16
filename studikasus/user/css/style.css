@@ -313,6 +313,7 @@ ol {
 
 .header {
 	background: #ffffff;
+	transition: top 0.3s ease-in-out;
 }
 
 .header__top {

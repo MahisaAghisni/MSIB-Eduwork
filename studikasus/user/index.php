@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('../admin/connection.php');
 $query = mysqli_query($conn, "SELECT id, category_id, brands_id, product_name, image, description, price, stock FROM product");
 ?>
@@ -49,7 +50,7 @@ $query = mysqli_query($conn, "SELECT id, category_id, brands_id, product_name, i
     <!-- Offcanvas Menu End -->
 
     <!-- Header Section Begin -->
-    <header class="header">
+    <header class="header fixed-top" style="transition: 0.5s;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-3">
@@ -69,7 +70,24 @@ $query = mysqli_query($conn, "SELECT id, category_id, brands_id, product_name, i
                 <div class="col-lg-3 col-md-3">
                     <div class="header__menu mobile-menu">
                         <ul>
-                            <li><a href="../admin/">Login</a></li>
+                            <?php
+                            if (isset($_SESSION['role'])) {
+                            ?>
+                                <li><a href="#"><?php echo $_SESSION['nama_user']; ?></a>
+                                    <ul class="dropdown">
+                                        <li><a href="logout.php">Logout</a></li>
+                                        <?php
+                                        if ($_SESSION['role'] === 'admin') {
+                                        ?>
+                                            <li><a href="../admin/">Dashboard</a></li>
+                                        <?php
+                                        }
+                                        ?>
+                                    </ul>
+                                </li>
+                            <?php } else { ?>
+                                <li><a href="login.php">Login</a></li>
+                            <?php } ?>
                         </ul>
                     </div>
                 </div>
@@ -203,7 +221,7 @@ $query = mysqli_query($conn, "SELECT id, category_id, brands_id, product_name, i
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star-o"></i>
                                         </div>
-                                        <h5><?php echo $data['price']; ?></h5>
+                                        <h5>Rp. <?php echo number_format($data['price'], 0, ',', '.'); ?></h5>
                                         <div class="product__color__select">
                                             <label for="pc-1">
                                                 <input type="radio" id="pc-1">
@@ -217,7 +235,7 @@ $query = mysqli_query($conn, "SELECT id, category_id, brands_id, product_name, i
                                         </div>
                                     </div>
                                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="shop-details.php?product_name=<?php echo $data['product_name']; ?>">Shop Now</a></div>
+                                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="shop-details.php?product_name=<?php echo $data['product_name']; ?>">Details</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -225,6 +243,7 @@ $query = mysqli_query($conn, "SELECT id, category_id, brands_id, product_name, i
                     </div>
                 </div>
             </section>
+
         </div>
     </section>
     <!-- Product Section End -->
@@ -300,6 +319,24 @@ $query = mysqli_query($conn, "SELECT id, category_id, brands_id, product_name, i
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+
+
+    <script>
+        var prevScrollpos = window.pageYOffset;
+
+        window.onscroll = function() {
+            var currentScrollPos = window.pageYOffset;
+
+            if (prevScrollpos > currentScrollPos) {
+                document.querySelector('.header').style.top = '0';
+            } else {
+                document.querySelector('.header').style.top = '-100px';
+            }
+
+            prevScrollpos = currentScrollPos;
+        }
+    </script>
+
 </body>
 
 </html>

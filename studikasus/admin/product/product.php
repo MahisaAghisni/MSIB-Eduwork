@@ -1,4 +1,5 @@
 <?php
+include('../cek.php');
 include('proses_product.php');
 $query = mysqli_query($conn, "SELECT * FROM product");
 ?>
@@ -69,19 +70,24 @@ $query = mysqli_query($conn, "SELECT * FROM product");
                 <li class="nav-item dropdown pe-3">
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <img src="../assets/img/profile.png" alt="Profile" class="rounded-circle">
-                        <span class="d-none d-md-block dropdown-toggle ps-2">Admin</span>
-                    </a><!-- End Profile Iamge Icon -->
+                        <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo $_SESSION['nama_user']; ?></span>
+                    </a>
 
                     <ul class="dropdown-menu">
                         <li>
                             <a class="dropdown-item d-flex align-items-center" href="../../user/index.php">
+                                <i class="bi bi-person"></i>
+                                <span>Home</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="../../user/login.php">
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>Log Out</span>
                             </a>
                         </li>
-                    </ul><!-- End Profile Dropdown Items -->
-                </li><!-- End Profile Nav -->
+                    </ul>
+                </li>
 
             </ul>
         </nav>
@@ -262,8 +268,8 @@ $query = mysqli_query($conn, "SELECT * FROM product");
                                         <td><?= $brand_name; ?></td>
                                         <td><?= $category_name; ?></td>
                                         <td><img src="../assets/img/<?= $image; ?>" width="100px"></td>
-                                        <td><?= $description; ?></td>
-                                        <td><?= $price; ?></td>
+                                        <td><?= strlen($description) > 50 ? substr($description, 0, 50) . '...' : $description; ?></td>
+                                        <td><?= number_format($price, 0, ',', '.'); ?></td>
                                         <td><?= $stock; ?></td>
                                         <td>
                                             <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit<?= $aksi; ?>">Edit</button>
@@ -410,7 +416,7 @@ $query = mysqli_query($conn, "SELECT * FROM product");
 
         function deleteItem(itemId) {
             Swal.fire({
-                title: 'Apakah anda yakin untuk menghapus <?= $product_name; ?>?',
+                title: 'Apakah anda yakin untuk menghapus product ini?',
                 text: "Anda tidak akan dapat mengembalikan ini!",
                 icon: 'warning',
                 showCancelButton: true,
